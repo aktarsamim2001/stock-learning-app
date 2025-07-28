@@ -85,9 +85,9 @@ const Header = () => {
               </div>
               <div>
                 <span className="text-2xl font-bold bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
-                  LearningHub
+                  StopLoss
                 </span>
-                <div className="text-xs text-slate-400 font-medium">Transform Your Future</div>
+                <div className="text-xs text-slate-400 font-medium">Build Your Innovative Future</div>
               </div>
             </Link>
           </div>

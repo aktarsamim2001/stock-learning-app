@@ -152,9 +152,9 @@ const Footer = () => {
                 </div>
                 <div>
                   <h3 className="text-3xl font-bold bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
-                    LearningHub
+                    StopLoss
                   </h3>
-                  <div className="text-sm text-slate-400 font-medium">Transform Your Future</div>
+                  <div className="text-sm text-slate-400 font-medium">Build Your Innovative Future</div>
                 </div>
               </div>
 
@@ -285,8 +285,8 @@ const Footer = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-6 lg:space-y-0">
               <div>
-                <p className="text-slate-300 text-lg mb-2">© {currentYear} LearningHub. All rights reserved.</p>
-                <p className="text-slate-400">Transforming education, one student at a time. 🚀</p>
+                <p className="text-slate-300 text-lg mb-2">© {currentYear} StopLoss. All rights reserved.</p>
+                <p className="text-slate-400">Building your innovative future with StopLoss, one student at a time. 🚀</p>
               </div>
 
               <div className="flex flex-wrap gap-8">
