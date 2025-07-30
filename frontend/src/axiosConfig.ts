@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 
 // Create axios instance with base URL
 const instance = axios.create({
-  baseURL: 'http://localhost:5000', // Backend server URL
+  baseURL: 'https://stop-loss-production.up.railway.app/', // Backend server URL
   timeout: 10000
 });
 
