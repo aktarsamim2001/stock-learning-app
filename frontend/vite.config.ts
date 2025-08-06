@@ -9,7 +9,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': 'http://localhost:5000',
+      '/api': 'https://political-disgust-production.up.railway.app/',
     },
     open: true,
   },
