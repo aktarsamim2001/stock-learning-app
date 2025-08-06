@@ -34,11 +34,18 @@ const PORT = process.env.PORT || 5000;
 
 // Configure CORS
 app.use(cors({
-  origin: ['https://stop-loss-murex.vercel.app/', 'https://stop-loss.com', 'http://localhost:3000'],
+  origin: [
+    'https://stop-loss-murex.vercel.app',
+    'https://stoploss.com',
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://localhost:5174' 
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 
 // Body parsing middleware
 app.use(express.json());
