@@ -88,7 +88,7 @@ const Register = () => {
         ></div>
       ))}
 
-      <div className="relative z-10">
+      <div className="relative z-10 mt-24">
         {/* Header Section */}
         <div className="sm:mx-auto sm:w-full sm:max-w-md text-center mb-8">
           <div className="mx-auto w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl">
@@ -101,7 +101,7 @@ const Register = () => {
         </div>
 
         {/* Registration Form */}
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md md:max-w-xl md:mx-auto">
           <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-8 transform hover:scale-[1.02] transition-all duration-300">
             <form className="space-y-6" onSubmit={handleSubmit}>
               {/* Name Field */}

@@ -174,110 +174,6 @@ const Home = () => {
         <div className="absolute top-1/2 -left-40 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute -bottom-40 right-1/3 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
       </div>
-
-      {/* Hero Banner Section */}
-      {/* <section className="relative w-full min-h-screen overflow-hidden">
-        <Swiper
-          modules={[Autoplay, Navigation, Pagination]}
-          spaceBetween={0}
-          slidesPerView={1}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          speed={1200}
-          loop={true}
-          pagination={{ clickable: true, el: ".hero-pagination" }}
-          navigation={{ prevEl: ".banner_prev", nextEl: ".banner_next" }}
-          className="w-full min-h-screen"
-        >
-          {mappedBanners.length > 0 ? (
-            mappedBanners.map((banner) => (
-              <SwiperSlide key={banner._id}>
-                <div className="relative w-full min-h-screen flex items-center justify-center">
-                  <img
-                    src={banner.img || "/placeholder.svg"}
-                    alt="Banner"
-                    className="absolute inset-0 w-full h-full object-cover object-center z-0"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70 z-10"></div>
-
-                  <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    {banner.badge && (
-                      <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-sm font-semibold mb-8 text-white">
-                        {banner.badge.icon && <span className="mr-2 text-lg">{banner.badge.icon}</span>}
-                        {banner.badge.text}
-                      </div>
-                    )}
-
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
-                      <span className="bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
-                        {banner.headline}
-                      </span>
-                    </h1>
-
-                    <p className="text-xl md:text-2xl lg:text-3xl text-slate-200 mb-10 max-w-4xl mx-auto leading-relaxed font-light">
-                      {banner.subheadline}
-                    </p>
-
-                    {banner.stats && banner.stats.length > 0 && (
-                      <div className="flex flex-wrap justify-center gap-6 mb-12">
-                        {banner.stats.map((stat: any, idx: number) => (
-                          <div
-                            key={idx}
-                            className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300"
-                          >
-                            <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-                            <div className="text-slate-300 text-sm font-medium">{stat.label}</div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {banner.ctaText && banner.ctaLink && (
-                      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <Link
-                          to={banner.ctaLink}
-                          className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-lg font-semibold rounded-xl shadow-2xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105"
-                        >
-                          {banner.ctaText}
-                          <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                        <button className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300">
-                          <Play className="mr-2 w-5 h-5" />
-                          Watch Demo
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))
-          ) : (
-            <SwiperSlide>
-              <div className="min-h-screen flex items-center justify-center text-white">
-                <div className="text-center">
-                  <h1 className="text-4xl font-bold mb-4">Welcome to Our Platform</h1>
-                  <p className="text-xl text-slate-300">No banners available</p>
-                </div>
-              </div>
-            </SwiperSlide>
-          )}
-        </Swiper>
-
-        <button
-          aria-label="Previous banner"
-          className="banner_prev absolute left-6 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full p-4 text-white hover:bg-white/20 focus:ring-4 focus:ring-purple-500/50 transition-all duration-300 transform hover:scale-110 z-30"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        <button
-          aria-label="Next banner"
-          className="banner_next absolute right-6 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full p-4 text-white hover:bg-white/20 focus:ring-4 focus:ring-purple-500/50 transition-all duration-300 transform hover:scale-110 z-30"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-
-        <div className="hero-pagination absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-2"></div>
-      </section> */}
-
       {/* Enhanced Hero Banner Section */}
       <section className="relative w-full min-h-screen overflow-hidden bg-black">
         {/* Background Pattern */}
@@ -317,45 +213,81 @@ const Home = () => {
 
                       {/* CTA Buttons */}
                       <div className="flex flex-col sm:flex-row gap-4">
-                        <button className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-lg font-semibold rounded-xl shadow-2xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
+                        <Link
+                          to={"/courses"}
+                        >
+                          <button className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-lg font-semibold rounded-xl shadow-2xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
                           {banner.ctaText}
                           <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </button>
+                        </Link>
 
-                        <button className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300">
-                          <Play className="mr-2 w-5 h-5" />
-                          Watch Demo
-                        </button>
+                        <Link
+                          to={"/webinars"}
+                        >
+                          <button className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300">
+                            <Play className="mr-2 w-5 h-5" />
+                            Live session
+                          </button>
+                        </Link>
                       </div>
 
                       {/* Stats */}
                       <div className="flex flex-wrap gap-6 pt-4">
                         {banner.stats && banner.stats.length > 0 ? (
-                          banner.stats.map((stat: { value: string | number; label: string }, idx: number) => (
-                            <div key={idx} className="flex items-center gap-2 text-slate-300">
-                              {/* Icon logic based on stat.label */}
-                              {stat.label?.toLowerCase().includes("student") && <Users className="w-5 h-5 text-purple-400" />}
-                              {stat.label?.toLowerCase().includes("course") && <BookOpen className="w-5 h-5 text-blue-400" />}
-                              {stat.label?.toLowerCase().includes("rating") && <Star className="w-5 h-5 text-yellow-400" />}
-                              <span className="font-semibold text-white">{stat.value}</span>
-                              <span>{stat.label}</span>
-                            </div>
-                          ))
+                          banner.stats.map(
+                            (
+                              stat: { value: string | number; label: string },
+                              idx: number
+                            ) => (
+                              <div
+                                key={idx}
+                                className="flex items-center gap-2 text-slate-300"
+                              >
+                                {/* Icon logic based on stat.label */}
+                                {stat.label
+                                  ?.toLowerCase()
+                                  .includes("student") && (
+                                  <Users className="w-5 h-5 text-purple-400" />
+                                )}
+                                {stat.label
+                                  ?.toLowerCase()
+                                  .includes("course") && (
+                                  <BookOpen className="w-5 h-5 text-blue-400" />
+                                )}
+                                {stat.label
+                                  ?.toLowerCase()
+                                  .includes("rating") && (
+                                  <Star className="w-5 h-5 text-yellow-400" />
+                                )}
+                                <span className="font-semibold text-white">
+                                  {stat.value}
+                                </span>
+                                <span>{stat.label}</span>
+                              </div>
+                            )
+                          )
                         ) : (
                           <>
                             <div className="flex items-center gap-2 text-slate-300">
                               <Users className="w-5 h-5 text-purple-400" />
-                              <span className="font-semibold text-white">50,000+</span>
+                              <span className="font-semibold text-white">
+                                50,000+
+                              </span>
                               <span>Students</span>
                             </div>
                             <div className="flex items-center gap-2 text-slate-300">
                               <BookOpen className="w-5 h-5 text-blue-400" />
-                              <span className="font-semibold text-white">500+</span>
+                              <span className="font-semibold text-white">
+                                500+
+                              </span>
                               <span>Courses</span>
                             </div>
                             <div className="flex items-center gap-2 text-slate-300">
                               <Star className="w-5 h-5 text-yellow-400" />
-                              <span className="font-semibold text-white">4.8</span>
+                              <span className="font-semibold text-white">
+                                4.8
+                              </span>
                               <span>Rating</span>
                             </div>
                           </>
@@ -473,107 +405,113 @@ const Home = () => {
 
       {/* About Us Section */}
       <section className="py-24 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row md:items-stretch items-center gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-stretch gap-12">
           {/* Left: Image */}
-          <div className="flex-1 flex justify-center items-stretch md:h-full mb-10 md:mb-0">
+          <div className="flex-1 flex justify-center items-stretch">
             <img
               src={aboutData.image}
               alt="About Invesmate"
-              className="h-full w-auto max-w-md rounded-3xl shadow-2xl border-4 border-white/10 object-cover"
+              className="w-full h-full min-h-[600px] max-w-md rounded-3xl shadow-2xl border-4 border-white/10 object-cover"
             />
           </div>
+
           {/* Right: Content */}
-          <div className="flex-1">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
-              {aboutData.headline}
-            </h2>
-            <p className="text-xl text-slate-300 mb-8 font-semibold">
-              {aboutData.subheadline}
-            </p>
-            <div className="space-y-6 mb-10">
-              {aboutData.sections &&
-                aboutData.sections.map((section: any, idx: number) => (
-                  <div key={idx} className="flex items-start gap-5">
-                    <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg">
-                      {/* Icon logic */}
-                      {section.icon === "sebi" && (
-                        <svg
-                          width="32"
-                          height="32"
-                          fill="none"
-                          viewBox="0 0 32 32"
-                        >
-                          <circle
-                            cx="16"
-                            cy="16"
-                            r="16"
-                            fill="#fff"
-                            fillOpacity="0.1"
-                          />
-                          <path
-                            d="M10 22V10h12v12H10zm2-2h8V12h-8v8z"
-                            fill="#7C3AED"
-                          />
-                        </svg>
-                      )}
-                      {section.icon === "trust" && (
-                        <svg
-                          width="32"
-                          height="32"
-                          fill="none"
-                          viewBox="0 0 32 32"
-                        >
-                          <circle
-                            cx="16"
-                            cy="16"
-                            r="16"
-                            fill="#fff"
-                            fillOpacity="0.1"
-                          />
-                          <path
-                            d="M16 8l6 4v8l-6 4-6-4v-8l6-4zm0 2.18L11 12.13v7.74l5 3.33 5-3.33v-7.74l-5-1.95z"
-                            fill="#10B981"
-                          />
-                        </svg>
-                      )}
-                      {section.icon === "mentorship" && (
-                        <svg
-                          width="32"
-                          height="32"
-                          fill="none"
-                          viewBox="0 0 32 32"
-                        >
-                          <circle
-                            cx="16"
-                            cy="16"
-                            r="16"
-                            fill="#fff"
-                            fillOpacity="0.1"
-                          />
-                          <path
-                            d="M16 10a4 4 0 110 8 4 4 0 010-8zm0 10c3.31 0 6 2.24 6 5v1H10v-1c0-2.76 2.69-5 6-5z"
-                            fill="#F59E42"
-                          />
-                        </svg>
-                      )}
+          <div className="flex-1 flex flex-col justify-between min-h-[600px]">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
+                {aboutData.headline}
+              </h2>
+              <p className="text-xl text-slate-300 mb-8 font-semibold">
+                {aboutData.subheadline}
+              </p>
+              <div className="space-y-6 mb-10 flex-grow">
+                {aboutData.sections &&
+                  aboutData.sections.map((section: any, idx: number) => (
+                    <div key={idx} className="flex items-start gap-5">
+                      <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg">
+                        {/* Icon logic */}
+                        {section.icon === "sebi" && (
+                          <svg
+                            width="32"
+                            height="32"
+                            fill="none"
+                            viewBox="0 0 32 32"
+                          >
+                            <circle
+                              cx="16"
+                              cy="16"
+                              r="16"
+                              fill="#fff"
+                              fillOpacity="0.1"
+                            />
+                            <path
+                              d="M10 22V10h12v12H10zm2-2h8V12h-8v8z"
+                              fill="#7C3AED"
+                            />
+                          </svg>
+                        )}
+                        {section.icon === "trust" && (
+                          <svg
+                            width="32"
+                            height="32"
+                            fill="none"
+                            viewBox="0 0 32 32"
+                          >
+                            <circle
+                              cx="16"
+                              cy="16"
+                              r="16"
+                              fill="#fff"
+                              fillOpacity="0.1"
+                            />
+                            <path
+                              d="M16 8l6 4v8l-6 4-6-4v-8l6-4zm0 2.18L11 12.13v7.74l5 3.33 5-3.33v-7.74l-5-1.95z"
+                              fill="#10B981"
+                            />
+                          </svg>
+                        )}
+                        {section.icon === "mentorship" && (
+                          <svg
+                            width="32"
+                            height="32"
+                            fill="none"
+                            viewBox="0 0 32 32"
+                          >
+                            <circle
+                              cx="16"
+                              cy="16"
+                              r="16"
+                              fill="#fff"
+                              fillOpacity="0.1"
+                            />
+                            <path
+                              d="M16 10a4 4 0 110 8 4 4 0 010-8zm0 10c3.31 0 6 2.24 6 5v1H10v-1c0-2.76 2.69-5 6-5z"
+                              fill="#F59E42"
+                            />
+                          </svg>
+                        )}
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold text-white mb-1">
+                          {section.title}
+                        </h4>
+                        <p className="text-slate-300 text-base">
+                          {section.description}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-lg font-bold text-white mb-1">
-                        {section.title}
-                      </h4>
-                      <p className="text-slate-300 text-base">
-                        {section.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+              </div>
             </div>
-            <Link
-              to={aboutData.buttonLink}
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg transform hover:scale-105"
-            >
-              {aboutData.buttonText}
-            </Link>
+
+            <div className="mt-auto">
+              <Link
+                to={aboutData.buttonLink}
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg transform hover:scale-105"
+              >
+                {aboutData.buttonText}
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -633,7 +571,7 @@ const Home = () => {
             </Link>
           </div>
 
-          <div className="relative">
+          <div className="relative h-[550px]">
             <Swiper
               modules={[Autoplay, Navigation]}
               spaceBetween={30}
@@ -654,10 +592,10 @@ const Home = () => {
             >
               {courses.length > 0 ? (
                 courses.map((course) => (
-                  <SwiperSlide key={course._id}>
+                  <SwiperSlide key={course._id} className="h-auto">
                     <Link
                       to={`/courses/${course._id}`}
-                      className="group block bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl  shadow-xl"
+                      className="group flex flex-col bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl h-full"
                     >
                       <div className="relative overflow-hidden rounded-t-2xl">
                         <img
@@ -684,39 +622,41 @@ const Home = () => {
                         </div>
                       </div>
 
-                      <div className="p-6">
-                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors line-clamp-2">
+                      <div className="p-6 flex flex-col flex-grow">
+                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors line-clamp-2 min-h-[3.5rem]">
                           {course.title || "Untitled Course"}
                         </h3>
-                        <p className="text-slate-300 mb-6 line-clamp-2 leading-relaxed">
+                        <p className="text-slate-300 mb-6 line-clamp-3 leading-relaxed flex-grow min-h-[4.5rem]">
                           {course.description ||
                             "Comprehensive course designed to enhance your skills."}
                         </p>
 
-                        <div className="flex items-center justify-between mb-6">
-                          <div className="flex items-center text-slate-300">
-                            <Users className="h-4 w-4 mr-2 text-purple-400" />
-                            <span className="text-sm font-medium">
-                              {course.enrolledStudents?.length || 0} students
-                            </span>
+                        <div className="mt-auto">
+                          <div className="flex items-center justify-between mb-6">
+                            <div className="flex items-center text-slate-300">
+                              <Users className="h-4 w-4 mr-2 text-purple-400" />
+                              <span className="text-sm font-medium">
+                                {course.enrolledStudents?.length || 0} students
+                              </span>
+                            </div>
+                            <div className="flex items-center text-slate-300">
+                              <Clock className="h-4 w-4 mr-2 text-blue-400" />
+                              <span className="text-sm font-medium">
+                                12 weeks
+                              </span>
+                            </div>
                           </div>
-                          <div className="flex items-center text-slate-300">
-                            <Clock className="h-4 w-4 mr-2 text-blue-400" />
-                            <span className="text-sm font-medium">
-                              12 weeks
-                            </span>
-                          </div>
-                        </div>
 
-                        <div className="flex items-center justify-between">
-                          <span className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                            ₹{course.price?.toLocaleString() || "0"}
-                          </span>
-                          <div className="flex items-center text-emerald-400 bg-emerald-400/20 px-3 py-1 rounded-full">
-                            <TrendingUp className="w-4 h-4 mr-1" />
-                            <span className="text-sm font-semibold">
-                              Popular
+                          <div className="flex items-center justify-between">
+                            <span className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                              ₹{course.price?.toLocaleString() || "0"}
                             </span>
+                            <div className="flex items-center text-emerald-400 bg-emerald-400/20 px-3 py-1 rounded-full">
+                              <TrendingUp className="w-4 h-4 mr-1" />
+                              <span className="text-sm font-semibold">
+                                Popular
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -725,7 +665,7 @@ const Home = () => {
                 ))
               ) : (
                 <SwiperSlide>
-                  <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-12 text-center">
+                  <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-12 text-center h-full">
                     <BookOpen className="w-16 h-16 mx-auto mb-4 text-slate-400 opacity-50" />
                     <p className="text-slate-400 text-lg">
                       No courses available
@@ -938,9 +878,9 @@ const Home = () => {
             >
               {webinars.length > 0 ? (
                 webinars.map((webinar) => (
-                  <SwiperSlide key={webinar._id}>
-                    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-500 shadow-xl">
-                      <div className="p-8">
+                  <SwiperSlide key={webinar._id} className="h-auto">
+                    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-500 shadow-xl h-full flex flex-col">
+                      <div className="p-8 flex flex-col h-full">
                         <div className="flex items-center justify-between mb-8">
                           <div className="flex items-center gap-4">
                             <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-emerald-500/20 to-green-500/20 text-emerald-400 border border-emerald-500/30">
@@ -960,11 +900,11 @@ const Home = () => {
                           </div>
                         </div>
 
-                        <h3 className="text-3xl font-bold text-white mb-6 leading-tight">
+                        <h3 className="text-3xl font-bold text-white mb-6 leading-tight min-h-[6rem]">
                           {webinar.title || "Expert-Led Webinar Session"}
                         </h3>
 
-                        <p className="text-slate-300 mb-8 text-lg leading-relaxed line-clamp-3">
+                        <p className="text-slate-300 mb-8 text-lg leading-relaxed line-clamp-3 flex-grow min-h-[5rem]">
                           {webinar.description ||
                             "Join us for an insightful session with industry experts."}
                         </p>
@@ -988,38 +928,40 @@ const Home = () => {
                           </div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                          <div className="flex items-center text-slate-300 bg-white/10 border border-white/20 p-4 rounded-xl">
-                            <Calendar className="h-5 w-5 mr-3 text-purple-400" />
-                            <span className="font-semibold">
-                              {webinar.startTime &&
-                              !isNaN(new Date(webinar.startTime).getTime())
-                                ? format(new Date(webinar.startTime), "PPp")
-                                : "Date TBA"}
-                            </span>
+                        <div className="mt-auto">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                            <div className="flex items-center text-slate-300 bg-white/10 border border-white/20 p-4 rounded-xl">
+                              <Calendar className="h-5 w-5 mr-3 text-purple-400" />
+                              <span className="font-semibold">
+                                {webinar.startTime &&
+                                !isNaN(new Date(webinar.startTime).getTime())
+                                  ? format(new Date(webinar.startTime), "PPp")
+                                  : "Date TBA"}
+                              </span>
+                            </div>
+                            <div className="flex items-center text-slate-300 bg-white/10 border border-white/20 p-4 rounded-xl">
+                              <Clock className="h-5 w-5 mr-3 text-blue-400" />
+                              <span className="font-semibold">
+                                {webinar.duration || 60} minutes
+                              </span>
+                            </div>
                           </div>
-                          <div className="flex items-center text-slate-300 bg-white/10 border border-white/20 p-4 rounded-xl">
-                            <Clock className="h-5 w-5 mr-3 text-blue-400" />
-                            <span className="font-semibold">
-                              {webinar.duration || 60} minutes
-                            </span>
-                          </div>
-                        </div>
 
-                        <Link
-                          to={`/webinars/${webinar._id}`}
-                          className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg transform hover:scale-105"
-                        >
-                          Register Now
-                          <ArrowRight className="ml-2 h-5 w-5" />
-                        </Link>
+                          <Link
+                            to={`/webinars/${webinar._id}`}
+                            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg transform hover:scale-105"
+                          >
+                            Register Now
+                            <ArrowRight className="ml-2 h-5 w-5" />
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </SwiperSlide>
                 ))
               ) : (
                 <SwiperSlide>
-                  <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-12 text-center">
+                  <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-12 text-center h-full">
                     <Calendar className="w-16 h-16 mx-auto mb-4 text-slate-400 opacity-50" />
                     <p className="text-slate-400 text-lg">
                       No webinars scheduled

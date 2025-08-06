@@ -49,7 +49,8 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   const [error, setError] = useState<string | null>(null);
 
   // API URL
-  const API_URL = 'http://localhost:5000/api/users';
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const API_URL = `${API_BASE_URL}api/users`;
 
   // On mount, initialize user from cookie if present
   useEffect(() => {

@@ -178,7 +178,7 @@ const Header = () => {
                         <Settings className="h-4 w-4" />
                         <span>Settings</span>
                       </Link>
-                      <div className="border-t border-white/10 mt-2 pt-2">
+                      {/* <div className="border-t border-white/10 mt-2 pt-2">
                         <button
                           onClick={handleLogout}
                           className="flex items-center space-x-3 px-4 py-3 text-sm text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-all duration-300 w-full text-left"
@@ -186,7 +186,7 @@ const Header = () => {
                           <LogOut className="h-4 w-4" />
                           <span>Sign Out</span>
                         </button>
-                      </div>
+                      </div> */}
                     </div>
                   )}
                 </div>
