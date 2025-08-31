@@ -499,49 +499,6 @@ const AboutPage = () => {
             </div>
           </div>
         </section>
-        {/* Social Links */}
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-white mb-8">Let's Connect</h2>
-            <p className="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">
-              {aboutData.socialText || "I'm always excited to collaborate on new projects and meet fellow creatives. Feel free to reach out through any of these platforms!"}
-            </p>
-            <div className="flex justify-center space-x-6">
-              {socialLinks.length > 0
-                ? socialLinks.map(({ icon, url, color }, index) => {
-                    const Icon = iconMap[icon] || Mail
-                    return (
-                      <a
-                        key={index}
-                        href={url}
-                        className={`p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-slate-300 ${color || ''} transition-all duration-300 transform hover:scale-110 hover:bg-white/20`}
-                        target="_blank" rel="noopener noreferrer"
-                      >
-                        <Icon className="h-6 w-6" />
-                      </a>
-                    )
-                  })
-                : [
-                    { icon: 'Linkedin', url: '#', color: 'hover:text-blue-400' },
-                    { icon: 'Twitter', url: '#', color: 'hover:text-sky-400' },
-                    { icon: 'Instagram', url: '#', color: 'hover:text-pink-400' },
-                    { icon: 'Github', url: '#', color: 'hover:text-gray-400' },
-                    { icon: 'Mail', url: '#', color: 'hover:text-emerald-400' },
-                  ].map(({ icon, url, color }, index) => {
-                    const Icon = iconMap[icon] || Mail
-                    return (
-                      <a
-                        key={index}
-                        href={url}
-                        className={`p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-slate-300 ${color} transition-all duration-300 transform hover:scale-110 hover:bg-white/20`}
-                      >
-                        <Icon className="h-6 w-6" />
-                      </a>
-                    )
-                  })}
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   )

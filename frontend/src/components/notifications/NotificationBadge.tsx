@@ -13,12 +13,10 @@ const NotificationBadge = () => {
 
   useEffect(() => {
     dispatch(fetchUnreadCount());
-    // Poll for new notifications every minute
     const interval = setInterval(() => {
       dispatch(fetchUnreadCount());
     }, 60000);
 
-    // Add click outside listener to close dropdown
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);

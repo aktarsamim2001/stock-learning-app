@@ -337,16 +337,16 @@ const CourseList = () => {
               key={course._id}
               to={`/courses/${course._id}`}
               className={`group bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl hover:scale-105 transition-all duration-500 ${
-                viewMode === "list" ? "flex" : ""
+                viewMode === "list" ? "flex h-[280px]" : ""
               }`}
             >
               <div className={viewMode === "list" ? "w-1/3" : "aspect-w-16 h-24fsda"}>
-                <div className="relative overflow-hidden">
+                <div className="relative h-[280px] overflow-hidden">
                   <img
                     src={course.thumbnail}
                     alt={course.title}
                     className={`object-cover transition-transform duration-700 group-hover:scale-110 ${
-                      viewMode === "list" ? "w-full h-full" : "w-full h-56"
+                      viewMode === "list" ? "w-full h-[280px]" : "w-full h-56"
                     }`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

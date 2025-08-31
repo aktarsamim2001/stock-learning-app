@@ -168,30 +168,6 @@ const Contact = () => {
               Ready to transform your future? We'd love to hear from you. Send us a message and let's create something
               amazing together.
             </p>
-
-            {/* Enhanced Stats */}
-            {/* <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-              {[
-                { icon: Clock, value: "24h", label: "Response Time" },
-                { icon: Users, value: "10K+", label: "Happy Students" },
-                { icon: Award, value: "Expert", label: "Support Team" },
-                { icon: Globe, value: "Global", label: "Community" },
-              ].map((stat, index) => {
-                const Icon = stat.icon
-                return (
-                  <div
-                    key={index}
-                    className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-center"
-                  >
-                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                      <Icon className="h-6 w-6 text-white" />
-                    </div>
-                    <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-                    <div className="text-slate-400 text-sm">{stat.label}</div>
-                  </div>
-                )
-              })}
-            </div> */}
           </div>
         </div>
       </div>
@@ -322,7 +298,7 @@ const Contact = () => {
               <div className="space-y-6">
                 <div className="group p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300">
                   <div className="flex items-start space-x-4">
-                    <div className="w-14 h-14 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <div className="w-14 h-14 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                       <Mail className="h-7 w-7 text-white" />
                     </div>
                     <div className="flex-1">

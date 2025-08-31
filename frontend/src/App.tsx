@@ -46,7 +46,7 @@ function App() {
           <div className="absolute w-60 h-60 bg-indigo-400 opacity-20 rounded-full filter blur-2xl animate-blob3 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
         </div>
         {/* Loader content */}
-        <div className="flex flex-col items-center z-10">
+        {/* <div className="flex flex-col items-center z-10">
           <div className="relative flex items-center justify-center">
             <span className="absolute inline-flex h-20 w-20 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500 opacity-30 animate-ping"></span>
             <span className="relative inline-flex rounded-full h-20 w-20 bg-gradient-to-tr from-purple-500 to-blue-500 opacity-80"></span>
@@ -56,7 +56,7 @@ function App() {
             </svg>
           </div>
           <p className="mt-6 text-blue-100 font-semibold text-lg tracking-wide animate-pulse">Loading amazing content...</p>
-        </div>
+        </div> */}
         {/* Custom keyframes for blobs */}
         <style>{`
           @keyframes blob1 { 0%,100%{transform:translate(0,0) scale(1);} 33%{transform:translate(30px,-20px) scale(1.1);} 66%{transform:translate(-20px,20px) scale(0.9);} }

@@ -26,98 +26,98 @@ import type { AppDispatch, RootState } from "../../store/store";
 import { UserContext } from "../../context/UserContext";
 
 // Mock data for demonstration
-const mockWebinars = [
-  {
-    _id: "1",
-    title: "Advanced React Patterns and Performance Optimization",
-    description:
-      "Deep dive into advanced React patterns, hooks optimization, and performance best practices for large-scale applications.",
-    speaker: {
-      name: "Dr. Sarah Johnson",
-      profileImage:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
-    },
-    startTime: "2025-06-15T14:00:00Z",
-    duration: 90,
-    attendees: Array(127).fill(null),
-    category: "Frontend Development",
-  },
-  {
-    _id: "2",
-    title: "Machine Learning for Web Developers",
-    description:
-      "Introduction to implementing ML models in web applications using TensorFlow.js and practical use cases.",
-    speaker: {
-      name: "Prof. Michael Chen",
-      profileImage:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-    },
-    startTime: "2025-06-18T16:30:00Z",
-    duration: 120,
-    attendees: Array(89).fill(null),
-    category: "Machine Learning",
-  },
-  {
-    _id: "3",
-    title: "Cloud Architecture Best Practices",
-    description:
-      "Scalable cloud solutions, microservices architecture, and DevOps practices for modern applications.",
-    speaker: {
-      name: "Dr. Sarah Johnson",
-      profileImage:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
-    },
-    startTime: "2025-06-22T13:00:00Z",
-    duration: 75,
-    attendees: Array(156).fill(null),
-    category: "Cloud Computing",
-  },
-  {
-    _id: "4",
-    title: "UX Design Psychology & User Behavior",
-    description:
-      "Understanding user psychology, behavior patterns, and creating intuitive interfaces that convert.",
-    speaker: {
-      name: "Emma Rodriguez",
-      profileImage:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
-    },
-    startTime: "2025-06-25T15:00:00Z",
-    duration: 60,
-    attendees: Array(203).fill(null),
-    category: "UX/UI Design",
-  },
-  {
-    _id: "5",
-    title: "Blockchain Development Fundamentals",
-    description:
-      "Smart contracts, DeFi protocols, and building decentralized applications on Ethereum.",
-    speaker: {
-      name: "Alex Thompson",
-      profileImage:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-    },
-    startTime: "2025-06-28T17:00:00Z",
-    duration: 105,
-    attendees: Array(78).fill(null),
-    category: "Blockchain",
-  },
-  {
-    _id: "6",
-    title: "Data Visualization with D3.js",
-    description:
-      "Creating interactive and beautiful data visualizations for web applications using D3.js and modern techniques.",
-    speaker: {
-      name: "Prof. Michael Chen",
-      profileImage:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-    },
-    startTime: "2025-07-02T14:30:00Z",
-    duration: 85,
-    attendees: Array(134).fill(null),
-    category: "Data Science",
-  },
-];
+// const mockWebinars = [
+//   {
+//     _id: "1",
+//     title: "Advanced React Patterns and Performance Optimization",
+//     description:
+//       "Deep dive into advanced React patterns, hooks optimization, and performance best practices for large-scale applications.",
+//     speaker: {
+//       name: "Dr. Sarah Johnson",
+//       profileImage:
+//         "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+//     },
+//     startTime: "2025-06-15T14:00:00Z",
+//     duration: 90,
+//     attendees: Array(127).fill(null),
+//     category: "Frontend Development",
+//   },
+//   {
+//     _id: "2",
+//     title: "Machine Learning for Web Developers",
+//     description:
+//       "Introduction to implementing ML models in web applications using TensorFlow.js and practical use cases.",
+//     speaker: {
+//       name: "Prof. Michael Chen",
+//       profileImage:
+//         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+//     },
+//     startTime: "2025-06-18T16:30:00Z",
+//     duration: 120,
+//     attendees: Array(89).fill(null),
+//     category: "Machine Learning",
+//   },
+//   {
+//     _id: "3",
+//     title: "Cloud Architecture Best Practices",
+//     description:
+//       "Scalable cloud solutions, microservices architecture, and DevOps practices for modern applications.",
+//     speaker: {
+//       name: "Dr. Sarah Johnson",
+//       profileImage:
+//         "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+//     },
+//     startTime: "2025-06-22T13:00:00Z",
+//     duration: 75,
+//     attendees: Array(156).fill(null),
+//     category: "Cloud Computing",
+//   },
+//   {
+//     _id: "4",
+//     title: "UX Design Psychology & User Behavior",
+//     description:
+//       "Understanding user psychology, behavior patterns, and creating intuitive interfaces that convert.",
+//     speaker: {
+//       name: "Emma Rodriguez",
+//       profileImage:
+//         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+//     },
+//     startTime: "2025-06-25T15:00:00Z",
+//     duration: 60,
+//     attendees: Array(203).fill(null),
+//     category: "UX/UI Design",
+//   },
+//   {
+//     _id: "5",
+//     title: "Blockchain Development Fundamentals",
+//     description:
+//       "Smart contracts, DeFi protocols, and building decentralized applications on Ethereum.",
+//     speaker: {
+//       name: "Alex Thompson",
+//       profileImage:
+//         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+//     },
+//     startTime: "2025-06-28T17:00:00Z",
+//     duration: 105,
+//     attendees: Array(78).fill(null),
+//     category: "Blockchain",
+//   },
+//   {
+//     _id: "6",
+//     title: "Data Visualization with D3.js",
+//     description:
+//       "Creating interactive and beautiful data visualizations for web applications using D3.js and modern techniques.",
+//     speaker: {
+//       name: "Prof. Michael Chen",
+//       profileImage:
+//         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+//     },
+//     startTime: "2025-07-02T14:30:00Z",
+//     duration: 85,
+//     attendees: Array(134).fill(null),
+//     category: "Data Science",
+//   },
+// ];
 
 const WebinarList = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -284,18 +284,9 @@ const WebinarList = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 relative z-10">
         {/* Enhanced Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 space-y-6 lg:space-y-0">
-          <div>
-            <h2 className="text-3xl font-bold text-white mb-3">
-              Upcoming Sessions
-            </h2>
-            <p className="text-slate-300 text-lg">
-              {filteredWebinars.length} webinar
-              {filteredWebinars.length !== 1 ? "s" : ""} available
-            </p>
-          </div>
           {user && (user.role === "instructor" || user.role === "admin") && (
             <Link
               to="/webinars/create"
@@ -426,7 +417,7 @@ const WebinarList = () => {
                 <div className="flex items-center mb-6 p-4 bg-white/5 rounded-2xl border border-white/10">
                   <img
                     src={
-                      webinar.speaker?.profileImage || "https://placehold.co/40"
+                      webinar.speaker?.profileImage || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
                     }
                     alt={webinar.speaker?.name || "Speaker"}
                     className="h-14 w-14 rounded-full border-2 border-white/30 group-hover:border-purple-400/50 transition-colors duration-300"

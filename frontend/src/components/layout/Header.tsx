@@ -120,7 +120,7 @@ const Header = () => {
                 {/* Admin Notification */}
                 {user.role === "admin" && (
                   <Link
-                    to="/admin/dashboard"
+                    to="/dashboard"
                     className="relative p-2 text-slate-300 hover:text-white transition-colors duration-300"
                   >
                     <NotificationBadge />

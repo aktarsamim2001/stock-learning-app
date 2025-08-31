@@ -91,7 +91,7 @@ const NotificationList = ({ compact = false, onNotificationClick }: Notification
         </div>
       )}
 
-      <div className={`space-y-2 ${compact ? 'max-h-96' : 'max-h-[600px]'} overflow-y-auto`}>
+      <div className={`space-y-2 ${compact ? 'max-h-96' : 'max-h-[600px]'}`}>
         {notifications.length === 0 ? (
           <div className="text-center text-gray-400 py-4">
             No notifications to display

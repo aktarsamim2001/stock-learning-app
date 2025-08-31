@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   BookOpen,
@@ -8,6 +8,7 @@ import {
   Clock,
   Users,
   ArrowRight,
+  X,
   Star,
   TrendingUp,
   ChevronLeft,
@@ -84,7 +85,19 @@ const Home = () => {
     dispatch(fetchAbout());
   }, [dispatch]);
 
-  // Map backend banner fields to frontend expected fields
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      if (isVideoOpen) {
+        swiperRef.current.autoplay.stop();
+      } else {
+        swiperRef.current.autoplay.start();
+      }
+    }
+  }, [isVideoOpen]);
+
   const mappedBanners = banners.map((banner: any) => ({
     ...banner,
     img: banner.image,
@@ -94,6 +107,8 @@ const Home = () => {
     stats: banner.stats || [],
     badge: banner.badge || undefined,
   }));
+
+  console.log(mappedBanners);
 
   if (bannersLoading) {
     return (
@@ -191,6 +206,9 @@ const Home = () => {
           pagination={{ clickable: true, el: ".hero-pagination" }}
           navigation={{ prevEl: ".banner_prev", nextEl: ".banner_next" }}
           className="w-full min-h-screen"
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
         >
           {mappedBanners.length > 0 ? (
             mappedBanners.map((banner) => (
@@ -296,6 +314,27 @@ const Home = () => {
                     </div>
                     {/* Right Content - Image/Visual */}
                     <div className="relative">
+                      {/* Video Modal */}
+                      {isVideoOpen && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-20" onClick={() => setIsVideoOpen(false)}>
+                          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+                          <div className="relative w-full max-w-5xl mx-auto aspect-video">
+                            {/* <button 
+                              className="absolute -top-12 right-0 text-white hover:text-purple-300 transition-colors"
+                              onClick={() => setIsVideoOpen(false)}
+                            >
+                              <X className="w-8 h-8" />
+                            </button> */}
+                            <video
+                              src={banner.video}
+                              className="w-full h-full rounded-2xl"
+                              controls
+                              autoPlay
+                            ></video>
+                          </div>
+                        </div>
+                      )}
+
                       <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p- lg:p-11">
                         {/* Placeholder for main visual */}
                         <div className="aspect-[4/3] bg-gradient-to-br from-white/10 to-white/5 rounded-xl flex items-center justify-center border border-white/10">
@@ -304,8 +343,11 @@ const Home = () => {
                             alt={banner.title}
                             className="rounded-xl w-full h-full object-cover"
                           />
-                          <div className="absolute text-center space-y-4 cursor-pointer">
-                            <div className="w-16 h-16 mx-auto bg-black/60 hover:backdrop-blur-sm rounded-full flex items-center justify-center">
+                          <div 
+                            className="absolute text-center space-y-4 cursor-pointer"
+                            onClick={() => setIsVideoOpen(true)}
+                          >
+                            <div className="w-16 h-16 mx-auto bg-black/60 hover:backdrop-blur-sm rounded-full flex items-center justify-center transform hover:scale-110 transition-transform">
                               <Play className="w-8 h-8 text-white" />
                             </div>
                           </div>
@@ -776,7 +818,7 @@ const Home = () => {
                             <img
                               src={
                                 blog.authorId?.profileImage ||
-                                "https://placehold.co/40"
+                                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
                               }
                               alt={blog.authorId?.name || "Author"}
                               className="h-12 w-12 rounded-full mr-3 object-cover border-2 border-white/20"
@@ -913,7 +955,7 @@ const Home = () => {
                           <img
                             src={
                               webinar.speaker?.profileImage ||
-                              "https://placehold.co/60"
+                              "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
                             }
                             alt={webinar.speaker?.name || "Speaker"}
                             className="h-16 w-16 rounded-full mr-4 object-cover border-2 border-white/20"
@@ -1044,7 +1086,7 @@ const Home = () => {
                       </blockquote>
                       <div className="flex items-center justify-center">
                         <img
-                          src={t.img || "/placeholder.svg"}
+                          src={t.image || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"}
                           alt={t.name}
                           className="w-20 h-20 rounded-full mr-6 object-cover border-4 border-purple-500/30 shadow-lg"
                         />
@@ -1151,11 +1193,41 @@ const Home = () => {
                 Trusted by professionals from
               </p>
               <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-                <div className="text-white font-bold text-xl">Google</div>
-                <div className="text-white font-bold text-xl">Microsoft</div>
-                <div className="text-white font-bold text-xl">Amazon</div>
-                <div className="text-white font-bold text-xl">Meta</div>
-                <div className="text-white font-bold text-xl">Apple</div>
+                <div className="h-6 md:h-8">
+                  <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" 
+                    alt="Google"
+                    className="h-full w-auto object-contain brightness-0 invert hover:opacity-80 transition-opacity cursor-pointer"
+                  />
+                </div>
+                <div className="h-6 md:h-8">
+                  <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" 
+                    alt="Microsoft"
+                    className="h-full w-auto object-contain brightness-0 invert hover:opacity-80 transition-opacity cursor-pointer"
+                  />
+                </div>
+                <div className="h-6 md:h-8">
+                  <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" 
+                    alt="Amazon"
+                    className="h-full w-auto object-contain brightness-0 invert hover:opacity-80 transition-opacity cursor-pointer"
+                  />
+                </div>
+                <div className="h-6 md:h-8">
+                  <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" 
+                    alt="Meta"
+                    className="h-full w-auto object-contain brightness-0 invert hover:opacity-80 transition-opacity cursor-pointer"
+                  />
+                </div>
+                <div className="h-6 md:h-8">
+                  <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" 
+                    alt="Apple"
+                    className="h-full w-auto object-contain brightness-0 invert hover:opacity-80 transition-opacity cursor-pointer"
+                  />
+                </div>
               </div>
             </div>
           </div>
