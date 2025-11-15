@@ -1,7 +1,86 @@
-import User from '../models/userModel.js';
+// @desc    Admin update a course
+// @route   PUT /api/admin/courses/:id
+// @access  Private/Admin
+export const adminUpdateCourse = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  try {
+    const course = await Course.findById(req.params.id);
+    if (!course) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+    let thumbnailPath = course.thumbnail;
+    if (req.file) {
+      thumbnailPath = `/uploads/course-thumbnails/${req.file.filename}`;
+    } else if (req.body.thumbnailUrl) {
+      thumbnailPath = req.body.thumbnailUrl;
+    }
+    // Only update fields that are present in req.body
+    const updateFields = { ...req.body };
+    if (req.body.lessons) {
+      updateFields.lessons = JSON.parse(req.body.lessons);
+    }
+    updateFields.thumbnail = thumbnailPath;
+    Object.keys(updateFields).forEach((key) => {
+      course[key] = updateFields[key];
+    });
+    const updatedCourse = await course.save();
+    res.json(updatedCourse);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// @desc    Admin delete a course
+// @route   DELETE /api/admin/courses/:id
+// @access  Private/Admin
+export const adminDeleteCourse = async (req, res) => {
+  try {
+    const course = await Course.findByIdAndDelete(req.params.id);
+    if (!course) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+    res.json({ message: 'Course removed' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 import Course from '../models/courseModel.js';
-import Payment from '../models/paymentModel.js';
 import { validationResult } from 'express-validator';
+
+// @desc    Admin create a new course
+// @route   POST /api/admin/courses
+// @access  Private/Admin
+export const adminCreateCourse = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  try {
+    let thumbnailPath = '';
+    if (req.file) {
+      thumbnailPath = `/uploads/course-thumbnails/${req.file.filename}`;
+    } else if (req.body.thumbnailUrl) {
+      thumbnailPath = req.body.thumbnailUrl;
+    }
+    const course = new Course({
+      ...req.body,
+      instructorId: req.body.instructorId || req.user.id, // allow admin to set instructor
+      thumbnail: thumbnailPath || req.body.thumbnail || '',
+      lessons: req.body.lessons ? JSON.parse(req.body.lessons) : [],
+      approved: true,
+      published: true,
+    });
+    const createdCourse = await course.save();
+    res.status(201).json(createdCourse);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+import User from '../models/userModel.js';
+import Payment from '../models/paymentModel.js';
 
 // @desc    Get all users with pagination and filters
 // @route   GET /api/admin/users

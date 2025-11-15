@@ -159,9 +159,9 @@ const BlogList = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pb-16 relative z-10">
         {/* Enhanced Header */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 space-y-6 lg:space-y-0">
+        {/* <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 space-y-6 lg:space-y-0">
           {user && (user.role === "admin" || user.role === "instructor") && (
             <Link
               to="/blogs/create"
@@ -171,7 +171,7 @@ const BlogList = () => {
               Create New Post
             </Link>
           )}
-        </div>
+        </div> */}
 
         {/* Enhanced Search and Filters */}
         <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 mb-12 shadow-2xl">

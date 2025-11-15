@@ -184,6 +184,7 @@ const CreateWebinar = () => {
                   className="mt-1 block w-full bg-white/10 border border-white/20 rounded-md py-2 px-3 text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 group-hover:bg-white/15"
                 >
                   <option value="">Select Instructor</option>
+                  <option value="new instructor">new instructor</option>
                   {instructors.map((inst: any) => (
                     <option key={inst._id} value={inst._id}>{inst.name}</option>
                   ))}

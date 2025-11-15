@@ -14,6 +14,7 @@ import StudentDashboard from './pages/student/StudentDashboard';
 import CourseList from './pages/courses/CourseList';
 import CourseDetail from './pages/courses/CourseDetail';
 import CreateCourse from './pages/courses/CreateCourse';
+import EditCourse from './pages/courses/EditCourse';
 import PaymentHistory from './pages/payments/PaymentHistory';
 import BlogList from './pages/blogs/BlogList';
 import BlogDetail from './pages/blogs/BlogDetail';
@@ -26,6 +27,9 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import RoleRoute from './components/auth/RoleRoute';
 import ErrorBoundary from './components/ErrorBoundary';
 import AboutPage from './pages/about';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions';
+import AdminLegalSettings from './components/admin/AdminLegalSettings';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -84,6 +88,14 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/courses" element={<CourseList />} />
               <Route path="/courses/:id" element={<CourseDetail />} />
+              <Route 
+                path="/courses/:id/edit" 
+                element={
+                  <RoleRoute allowedRoles={['instructor', 'admin']}>
+                    <EditCourse />
+                  </RoleRoute>
+                }
+              />
               <Route path="/blogs" element={<BlogList />} />
               <Route path="/blogs/:id" element={<BlogDetail />} />
               <Route path="/webinars" element={<WebinarList />} />
@@ -143,13 +155,25 @@ function App() {
                 } 
               />
               
-              <Route 
+              <Route
                 path="/payments/history" 
                 element={
                   <ProtectedRoute>
                     <PaymentHistory />
                   </ProtectedRoute>
                 } 
+              />
+
+              {/* Legal Routes */}
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-conditions" element={<TermsConditions />} />
+              <Route
+                path="/admin/legal-settings"
+                element={
+                  <RoleRoute allowedRoles={['admin']}>
+                    <AdminLegalSettings />
+                  </RoleRoute>
+                }
               />
               
               <Route path="*" element={<NotFound />} />

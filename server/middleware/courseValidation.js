@@ -37,6 +37,9 @@ export const courseValidation = [
         return true;
       } catch {
         throw new Error('Lessons must be a valid array');
+        if (!lesson.video || typeof lesson.video !== 'string' || !lesson.video.trim()) {
+          throw new Error('Lesson video link is required (Bunny.net URL)');
+        }
       }
     }
     throw new Error('Lessons must be an array');

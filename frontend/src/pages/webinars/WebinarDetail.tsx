@@ -123,7 +123,7 @@ const WebinarDetail = () => {
         prev
           ? {
               ...prev,
-              attendees: [...(prev.attendees || []), user?._id],
+              attendees: [...(prev.attendees || []), { email: form.email }],
             }
           : prev,
       )
@@ -232,7 +232,7 @@ const WebinarDetail = () => {
                 <span className="font-medium">Back to Webinars</span>
               </button>
 
-              <div className="flex items-center space-x-3">
+              {/* <div className="flex items-center space-x-3">
                 <button
                   onClick={() => setIsLiked(!isLiked)}
                   className={`p-3 rounded-xl transition-all duration-300 ${
@@ -265,7 +265,7 @@ const WebinarDetail = () => {
                     </button>
                   </>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

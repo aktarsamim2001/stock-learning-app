@@ -15,6 +15,8 @@ export const createCourse = async (req, res) => {
     let thumbnailPath = '';
     if (req.file) {
       thumbnailPath = `/uploads/course-thumbnails/${req.file.filename}`;
+    } else if (req.body.thumbnailUrl) {
+      thumbnailPath = req.body.thumbnailUrl;
     }
     const course = new Course({
       ...req.body,
@@ -51,9 +53,22 @@ export const updateCourse = async (req, res) => {
       return res.status(403).json({ message: 'Not authorized to update this course' });
     }
 
+
+    // If a new thumbnail is uploaded, update the path
+    if (req.file) {
+      course.thumbnail = `/uploads/course-thumbnails/${req.file.filename}`;
+    } else if (req.body.thumbnailUrl) {
+      course.thumbnail = req.body.thumbnailUrl;
+    }
+
     // Only update fields that are present in req.body
     Object.keys(req.body).forEach((key) => {
-      course[key] = req.body[key];
+      if (key === 'lessons') {
+        course.lessons = JSON.parse(req.body.lessons);
+      } else if (key !== 'thumbnail' && key !== 'thumbnailUrl') {
+        // Don't overwrite thumbnail with empty string if not uploading new one
+        course[key] = req.body[key];
+      }
     });
 
     const updatedCourse = await course.save();

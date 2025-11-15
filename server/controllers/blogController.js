@@ -11,8 +11,18 @@ export const createBlog = async (req, res) => {
   }
 
   try {
+    // Ensure tags is always an array (handles FormData edge case)
+    let tags = req.body.tags;
+    if (typeof tags === 'string') {
+      // Single tag as string
+      tags = [tags];
+    } else if (!Array.isArray(tags)) {
+      tags = [];
+    }
+
     const blog = new Blog({
       ...req.body,
+      tags,
       authorId: req.user._id,
     });
 
@@ -33,6 +43,14 @@ export const updateBlog = async (req, res) => {
   }
 
   try {
+    // Ensure tags is always an array (handles FormData edge case)
+    let tags = req.body.tags;
+    if (typeof tags === 'string') {
+      tags = [tags];
+    } else if (!Array.isArray(tags)) {
+      tags = [];
+    }
+
     const blog = await Blog.findById(req.params.id);
 
     if (!blog) {
@@ -45,7 +63,7 @@ export const updateBlog = async (req, res) => {
 
     const updatedBlog = await Blog.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      { ...req.body, tags },
       { new: true }
     );
 
@@ -70,8 +88,8 @@ export const deleteBlog = async (req, res) => {
       return res.status(403).json({ message: 'Not authorized to delete this blog' });
     }
 
-    await blog.remove();
-    res.json({ message: 'Blog removed' });
+  await Blog.deleteOne({ _id: blog._id });
+  res.json({ message: 'Blog removed' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

@@ -207,20 +207,30 @@ export const updateWebinar = async (req, res) => {
 // @desc    Delete webinar
 // @route   DELETE /api/webinars/:id
 // @access  Private/Instructor
+import mongoose from 'mongoose';
+
 export const deleteWebinar = async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: 'Invalid webinar ID' });
+    }
     const webinar = await Webinar.findById(req.params.id);
 
     if (!webinar) {
       return res.status(404).json({ message: 'Webinar not found' });
     }
 
-    if (webinar.speaker.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
+
+    // If webinar.speaker is null (custom speaker), only admin can delete
+    if (!webinar.speaker && req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Not authorized to delete this webinar (custom speaker webinars can only be deleted by admin)' });
+    }
+    if (webinar.speaker && webinar.speaker.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
       return res.status(403).json({ message: 'Not authorized to delete this webinar' });
     }
 
-    await webinar.remove();
-    res.json({ message: 'Webinar removed' });
+  await Webinar.deleteOne({ _id: webinar._id });
+  res.json({ message: 'Webinar removed' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

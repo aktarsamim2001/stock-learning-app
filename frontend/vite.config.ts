@@ -9,7 +9,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': 'https://stop-loss-production.up.railway.app/',
+      '/api': 'http://localhost:5000',
     },
     open: true,
   },

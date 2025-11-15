@@ -151,31 +151,6 @@ const BlogDetail = () => {
                 </div>
                 <span className="font-medium">Back to Articles</span>
               </button>
-
-              <div className="flex items-center space-x-3">
-                <button
-                  onClick={handleShare}
-                  className="p-3 rounded-xl text-slate-300 hover:text-white bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-300"
-                >
-                  <Share2 className="h-5 w-5" />
-                </button>
-                {isAuthor && (
-                  <>
-                    <button
-                      onClick={() => navigate(`/blogs/edit/${blog._id}`)}
-                      className="p-3 rounded-xl text-slate-300 hover:text-purple-300 bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-300"
-                    >
-                      <Edit className="h-5 w-5" />
-                    </button>
-                    <button
-                      onClick={handleDelete}
-                      className="p-3 rounded-xl text-red-400 hover:text-red-300 bg-red-400/10 border border-red-400/30 hover:bg-red-400/20 transition-all duration-300"
-                    >
-                      <Trash2 className="h-5 w-5" />
-                    </button>
-                  </>
-                )}
-              </div>
             </div>
           </div>
         </div>

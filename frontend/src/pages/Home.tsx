@@ -17,6 +17,8 @@ import {
   Play,
   Award,
   Globe,
+  ShieldCheck,
+  IndianRupee,
 } from "lucide-react";
 import { format } from "date-fns";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -108,7 +110,6 @@ const Home = () => {
     badge: banner.badge || undefined,
   }));
 
-  console.log(mappedBanners);
 
   if (bannersLoading) {
     return (
@@ -232,7 +233,7 @@ const Home = () => {
                       {/* CTA Buttons */}
                       <div className="flex flex-col sm:flex-row gap-4">
                         <Link
-                          to={"/courses"}
+                          to={banner.ctaLink}
                         >
                           <button className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-lg font-semibold rounded-xl shadow-2xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
                           {banner.ctaText}
@@ -337,11 +338,11 @@ const Home = () => {
 
                       <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p- lg:p-11">
                         {/* Placeholder for main visual */}
-                        <div className="aspect-[4/3] bg-gradient-to-br from-white/10 to-white/5 rounded-xl flex items-center justify-center border border-white/10">
+                        <div className="aspect-[4/3] bg-gradient-to-br from-white/10 to-white/5 rounded-tl-2xl rounded-br-2xl flex items-center justify-center border border-white/10">
                           <img
                             src={banner.image}
                             alt={banner.title}
-                            className="rounded-xl w-full h-full object-cover"
+                            className="rounded-tl-2xl rounded-br-xl w-full h-full object-cover"
                           />
                           <div 
                             className="absolute text-center space-y-4 cursor-pointer"
@@ -425,7 +426,11 @@ const Home = () => {
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                    <Award className="w-8 h-8 text-white" />
+                    {item.icon === "expert" && <Users className="w-8 h-8 text-white" />}
+                    {item.icon === "price" && <IndianRupee className="w-8 h-8 text-white" />}
+                    {item.icon === "learn" && <BookOpen className="w-8 h-8 text-white" />}
+                    {/* Fallback icon if needed */}
+                    {!["expert", "price", "learn"].includes(item.icon) && <Award className="w-8 h-8 text-white opacity-60" />}
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors">
                     {item.title}
@@ -471,66 +476,13 @@ const Home = () => {
                   aboutData.sections.map((section: any, idx: number) => (
                     <div key={idx} className="flex items-start gap-5">
                       <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg">
-                        {/* Icon logic */}
-                        {section.icon === "sebi" && (
-                          <svg
-                            width="32"
-                            height="32"
-                            fill="none"
-                            viewBox="0 0 32 32"
-                          >
-                            <circle
-                              cx="16"
-                              cy="16"
-                              r="16"
-                              fill="#fff"
-                              fillOpacity="0.1"
-                            />
-                            <path
-                              d="M10 22V10h12v12H10zm2-2h8V12h-8v8z"
-                              fill="#7C3AED"
-                            />
-                          </svg>
-                        )}
-                        {section.icon === "trust" && (
-                          <svg
-                            width="32"
-                            height="32"
-                            fill="none"
-                            viewBox="0 0 32 32"
-                          >
-                            <circle
-                              cx="16"
-                              cy="16"
-                              r="16"
-                              fill="#fff"
-                              fillOpacity="0.1"
-                            />
-                            <path
-                              d="M16 8l6 4v8l-6 4-6-4v-8l6-4zm0 2.18L11 12.13v7.74l5 3.33 5-3.33v-7.74l-5-1.95z"
-                              fill="#10B981"
-                            />
-                          </svg>
-                        )}
-                        {section.icon === "mentorship" && (
-                          <svg
-                            width="32"
-                            height="32"
-                            fill="none"
-                            viewBox="0 0 32 32"
-                          >
-                            <circle
-                              cx="16"
-                              cy="16"
-                              r="16"
-                              fill="#fff"
-                              fillOpacity="0.1"
-                            />
-                            <path
-                              d="M16 10a4 4 0 110 8 4 4 0 010-8zm0 10c3.31 0 6 2.24 6 5v1H10v-1c0-2.76 2.69-5 6-5z"
-                              fill="#F59E42"
-                            />
-                          </svg>
+                        {/* Icon logic - bold, white Lucide icons */}
+                        {section.icon === "sbi" && <ShieldCheck size={32} className="text-white" strokeWidth={2.5} />}
+                        {section.icon === "trust" && <Award size={32} className="text-white" strokeWidth={2.5} />}
+                        {section.icon === "mentorship" && <Users size={32} className="text-white" strokeWidth={2.5} />}
+                        {/* Fallback icon */}
+                        {!["sbi", "trust", "mentorship"].includes(section.icon) && (
+                          <ShieldCheck size={32} className="text-white opacity-60" strokeWidth={2.5} />
                         )}
                       </div>
                       <div>
@@ -1166,7 +1118,7 @@ const Home = () => {
                 </span>
               </h2>
               <p className="text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
-                Join over 50,000 professionals who have advanced their careers
+                Join over 500 professionals who have advanced their careers
                 with our expert-led courses. Start your journey today with a
                 free trial.
               </p>

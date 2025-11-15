@@ -55,30 +55,26 @@ const Footer = () => {
     { to: "/courses", label: "Courses" },
     { to: "/webinars", label: "Webinars" },
     { to: "/blogs", label: "Blog" },
-    { to: "/instructors", label: "Instructors" },
     { to: "/about", label: "About Us" },
   ]
 
   const supportLinks = [
-    { to: "/help", label: "Help Center" },
-    { to: "/faq", label: "FAQ" },
+    { to: "/", label: "FAQ" },
     { to: "/contact", label: "Contact Support" },
-    { to: "/community", label: "Community" },
+    { to: "/www.research360.in/", label: "Community" },
     { to: "/resources", label: "Resources" },
-    { to: "/tutorials", label: "Tutorials" },
+    { to: "/courses", label: "Tutorials" },
   ]
 
   const legalLinks = [
-    { to: "/privacy", label: "Privacy Policy" },
-    { to: "/terms", label: "Terms of Service" },
-    { to: "/cookies", label: "Cookie Policy" },
-    { to: "/accessibility", label: "Accessibility" },
+    { to: "/privacy-policy", label: "Privacy Policy" },
+    { to: "/terms-conditions", label: "Terms & Conditions" }
   ]
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook", color: "hover:text-blue-400" },
+    { icon: Facebook, href: "https://www.facebook.com/share/19Vpvhj4Ke/", label: "Facebook", color: "hover:text-blue-400" },
     { icon: Twitter, href: "#", label: "Twitter", color: "hover:text-sky-400" },
-    { icon: Instagram, href: "#", label: "Instagram", color: "hover:text-pink-400" },
+    { icon: Instagram, href: "https://www.instagram.com/stoplossstockmarketacademy?igsh=eG85Ym5lcHV6ZGw1", label: "Instagram", color: "hover:text-pink-400" },
     { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:text-blue-500" },
     { icon: Youtube, href: "#", label: "YouTube", color: "hover:text-red-400" },
   ]
@@ -286,7 +282,7 @@ const Footer = () => {
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-6 lg:space-y-0">
               <div>
                 <p className="text-slate-300 text-lg mb-2">© {currentYear} StopLoss. All rights reserved.</p>
-                <p className="text-slate-400">Building your innovative future with StopLoss, one student at a time. 🚀</p>
+                <p className="text-slate-400">Building your innovative future with StopLoss, one student at a time.</p>
               </div>
 
               <div className="flex flex-wrap gap-8">

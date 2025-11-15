@@ -20,7 +20,7 @@ router.get('/:id', protect, getCourseById);
 
 // Protected routes
 router.post('/', protect, isInstructor, upload.single('thumbnail'), courseValidation, createCourse);
-router.put('/:id', protect, isInstructor, updateCourse);
+router.put('/:id', protect, isInstructor, upload.single('thumbnail'), updateCourse);
 router.delete('/:id', protect, isInstructor, deleteCourse);
 router.patch('/:id/approve', protect, isAdmin, approveCourse);
 

@@ -16,6 +16,7 @@ import bannerReducer from './slices/bannerSlice';
 import whyChooseUsReducer from './slices/whyChooseUsSlice';
 import webinarRegistrationReducer from './slices/webinarRegistrationSlice';
 import aboutReducer from './slices/aboutSlice';
+import legalReducer from './legalSlice';
 
 export const store = configureStore({
   reducer: {
@@ -36,6 +37,7 @@ export const store = configureStore({
     whyChooseUs: whyChooseUsReducer,
     webinarRegistration: webinarRegistrationReducer,
     about: aboutReducer,
+    legal: legalReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

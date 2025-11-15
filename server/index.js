@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+
+// Routes
 import userRoutes from './routes/userRoutes.js';
 import courseRoutes from './routes/courseRoutes.js';
 import enrollmentRoutes from './routes/enrollmentRoutes.js';
@@ -19,10 +21,15 @@ import statRoutes from './routes/statRoutes.js';
 import testimonialRoutes from './routes/testimonialRoutes.js';
 import faqRoutes from './routes/faqRoutes.js';
 import whyChooseUsRoutes from './routes/whyChooseUsRoutes.js';
-import { errorHandler } from './middleware/errorMiddleware.js';
-import { getContactInfo } from './controllers/contactController.js';
 import webinarRegistrationRoutes from './routes/webinarRegistrationRoutes.js';
 import aboutRoutes from './routes/aboutRoutes.js';
+
+// ✅ Newly added
+import termsConditionRoutes from './routes/termsConditionRoutes.js';
+import privacyPolicyRoutes from './routes/privacyPolicyRoutes.js';
+
+import { errorHandler } from './middleware/errorMiddleware.js';
+import { getContactInfo } from './controllers/contactController.js';
 
 // Load environment variables
 dotenv.config();
@@ -39,13 +46,12 @@ app.use(cors({
     'https://stoploss.com',
     'http://localhost:3000',
     'http://localhost:5173',
-    'http://localhost:5174' 
+    'http://localhost:5174'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
 
 // Body parsing middleware
 app.use(express.json());
@@ -63,6 +69,7 @@ app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/student', studentRoutes);
 app.use('/api/notifications', notificationRoutes);
+app.use('/api/about', aboutRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/features', featureRoutes);
 app.use('/api/stats', statRoutes);
@@ -71,6 +78,11 @@ app.use('/api/faqs', faqRoutes);
 app.use('/api/why-choose-us', whyChooseUsRoutes);
 app.use('/api/webinar-registrations', webinarRegistrationRoutes);
 app.use('/api/about', aboutRoutes);
+
+// ✅ New Routes
+app.use('/api/terms-conditions', termsConditionRoutes);
+app.use('/api/privacy-policy', privacyPolicyRoutes);
+
 app.get('/api/contact-info', getContactInfo);
 
 // Serve uploaded files

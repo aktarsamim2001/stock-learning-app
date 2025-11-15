@@ -11,6 +11,7 @@ interface Lesson {
   content: string;
   duration: number;
   order: number;
+  video: string; // Bunny.net video link
 }
 
 const CreateCourse = () => {
@@ -18,6 +19,7 @@ const CreateCourse = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [thumbnail, setThumbnail] = useState<File | null>(null);
+  const [thumbnailUrl, setThumbnailUrl] = useState('');
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [formData, setFormData] = useState({
     title: "",
@@ -42,7 +44,13 @@ const CreateCourse = () => {
   const handleThumbnailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.[0]) {
       setThumbnail(e.target.files[0]);
+      setThumbnailUrl(''); // Clear URL if file is chosen
     }
+  };
+
+  const handleThumbnailUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setThumbnailUrl(e.target.value);
+    if (e.target.value) setThumbnail(null); // Clear file if URL is entered
   };
 
   const addLesson = () => {
@@ -53,6 +61,7 @@ const CreateCourse = () => {
         content: "",
         duration: 0,
         order: prev.length,
+        video: "",
       },
     ]);
   };
@@ -86,25 +95,19 @@ const CreateCourse = () => {
       newErrors.description = "Description must be at least 20 characters.";
     if (!formData.category) newErrors.category = "Category is required.";
     if (formData.price < 0) newErrors.price = "Price cannot be negative.";
-    if (!thumbnail) newErrors.thumbnail = "Course thumbnail is required.";
+  if (!thumbnail && !thumbnailUrl) newErrors.thumbnail = "Course thumbnail is required (file or URL).";
     if (!lessons.length) newErrors.lessons = "At least one lesson is required.";
     lessons.forEach((lesson, idx) => {
       if (!lesson.title.trim())
-        newErrors[`lesson-title-${idx}`] = `Lesson ${
-          idx + 1
-        }: Title is required.`;
+        newErrors[`lesson-title-${idx}`] = `Lesson ${idx + 1}: Title is required.`;
       if (!lesson.content.trim())
-        newErrors[`lesson-content-${idx}`] = `Lesson ${
-          idx + 1
-        }: Content is required.`;
+        newErrors[`lesson-content-${idx}`] = `Lesson ${idx + 1}: Content is required.`;
       if (!lesson.duration || lesson.duration <= 0)
-        newErrors[`lesson-duration-${idx}`] = `Lesson ${
-          idx + 1
-        }: Duration must be positive.`;
+        newErrors[`lesson-duration-${idx}`] = `Lesson ${idx + 1}: Duration must be positive.`;
       if (lesson.order < 0)
-        newErrors[`lesson-order-${idx}`] = `Lesson ${
-          idx + 1
-        }: Order must be non-negative.`;
+        newErrors[`lesson-order-${idx}`] = `Lesson ${idx + 1}: Order must be non-negative.`;
+      if (!lesson.video || !lesson.video.trim())
+        newErrors[`lesson-video-${idx}`] = `Lesson ${idx + 1}: Bunny.net video link is required.`;
     });
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -123,6 +126,8 @@ const CreateCourse = () => {
       courseData.append("lessons", JSON.stringify(lessons));
       if (thumbnail) {
         courseData.append("thumbnail", thumbnail);
+      } else if (thumbnailUrl) {
+        courseData.append("thumbnailUrl", thumbnailUrl);
       }
       courseData.append("published", "true");
       await dispatch(createCourse(courseData)).unwrap();
@@ -307,36 +312,35 @@ const CreateCourse = () => {
               </div>
 
               <div className="group">
-                <label className="block text-sm font-medium text-white">
-                  Course Thumbnail
-                </label>
-                <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-white/20 border-dashed rounded-md bg-white/5 transition-all duration-300 group-hover:bg-white/10">
-                  <div className="space-y-1 text-center">
-                    <div className="flex text-sm text-blue-100">
-                      <label
-                        htmlFor="thumbnail"
-                        className="relative cursor-pointer bg-white/10 rounded-md font-medium text-blue-100 hover:text-purple-300 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-purple-500 transition-colors duration-300"
-                      >
-                        <span>Upload a file</span>
-                        <input
-                          id="thumbnail"
-                          name="thumbnail"
-                          type="file"
-                          accept="image/*"
-                          className="sr-only"
-                          onChange={handleThumbnailChange}
-                        />
-                      </label>
-                    </div>
-                    <p className="text-xs text-blue-100">
-                      PNG, JPG, GIF up to 10MB
-                    </p>
-                    {errors.thumbnail && (
-                      <p className="text-red-400 text-xs mt-1">
-                        {errors.thumbnail}
-                      </p>
-                    )}
+                <label className="block text-sm font-medium text-white">Course Thumbnail</label>
+                <div className="flex flex-col gap-2 mt-1">
+                  <div className="flex items-center gap-2">
+                    <label className="relative cursor-pointer bg-white/10 rounded-md font-medium text-blue-100 hover:text-purple-300 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-purple-500 transition-colors duration-300 px-3 py-2">
+                      <span>Upload a file</span>
+                      <input
+                        id="thumbnail"
+                        name="thumbnail"
+                        type="file"
+                        accept="image/*"
+                        className="sr-only"
+                        onChange={handleThumbnailChange}
+                        disabled={!!thumbnailUrl}
+                      />
+                    </label>
+                    <span className="text-blue-100">or</span>
+                    <input
+                      type="text"
+                      placeholder="Paste image URL here"
+                      value={thumbnailUrl}
+                      onChange={handleThumbnailUrlChange}
+                      className="block w-64 rounded-md border border-white/20 bg-white/10 py-2 px-3 text-white placeholder-white/60 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      disabled={!!thumbnail}
+                    />
                   </div>
+                  <p className="text-xs text-blue-100">PNG, JPG, GIF up to 10MB or provide a direct image URL</p>
+                  {errors.thumbnail && (
+                    <p className="text-red-400 text-xs mt-1">{errors.thumbnail}</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -379,6 +383,25 @@ const CreateCourse = () => {
                   </div>
                   <div className="grid grid-cols-1 gap-4">
                     <div className="group">
+                    <div className="group">
+                      <label className="block text-sm font-medium text-white">
+                        Bunny.net Video Link
+                      </label>
+                      <input
+                        type="text"
+                        value={lesson.video}
+                        onChange={(e) =>
+                          updateLesson(index, "video", e.target.value)
+                        }
+                        placeholder="https://video.bunnycdn.com/..."
+                        className="mt-1 block w-full bg-white/10 border border-white/20 rounded-md py-2 px-3 text-white placeholder-white/60 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 group-hover:bg-white/15"
+                      />
+                      {errors[`lesson-video-${index}`] && (
+                        <p className="text-red-400 text-xs mt-1">
+                          {errors[`lesson-video-${index}`]}
+                        </p>
+                      )}
+                    </div>
                       <label className="block text-sm font-medium text-white">
                         Lesson Title
                       </label>

@@ -28,6 +28,7 @@ import {
   Music,
   Palette,
   Globe,
+  ShieldCheck,
 } from "lucide-react"
 import { useDispatch, useSelector } from "react-redux"
 import type { RootState, AppDispatch } from "../store/store"
@@ -231,37 +232,17 @@ const AboutPage = () => {
               <p className="text-xl text-slate-300 mb-8 font-semibold">{aboutData.subheadline}</p>
               <div className="space-y-6 mb-10">
                 {aboutData.sections.map((section: any, idx: number) => (
-                  <div key={idx} className="flex items-start gap-5">
-                    <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg">
-                      {/* Icon logic */}
-                      {section.icon === "sebi" && (
-                        <svg width="32" height="32" fill="none" viewBox="0 0 32 32">
-                          <circle cx="16" cy="16" r="16" fill="#fff" fillOpacity="0.1" />
-                          <path
-                            d="M10 22V10h12v12H10zm2-2h8V12h-8v8z"
-                            fill="#7C3AED"
-                          />
-                        </svg>
-                      )}
-                      {section.icon === "trust" && (
-                        <svg width="32" height="32" fill="none" viewBox="0 0 32 32">
-                          <circle cx="16" cy="16" r="16" fill="#fff" fillOpacity="0.1" />
-                          <path
-                            d="M16 8l6 4v8l-6 4-6-4v-8l6-4zm0 2.18L11 12.13v7.74l5 3.33 5-3.33v-7.74l-5-1.95z"
-                            fill="#10B981"
-                          />
-                        </svg>
-                      )}
-                      {section.icon === "mentorship" && (
-                        <svg width="32" height="32" fill="none" viewBox="0 0 32 32">
-                          <circle cx="16" cy="16" r="16" fill="#fff" fillOpacity="0.1" />
-                          <path
-                            d="M16 10a4 4 0 110 8 4 4 0 010-8zm0 10c3.31 0 6 2.24 6 5v1H10v-1c0-2.76 2.69-5 6-5z"
-                            fill="#F59E42"
-                          />
-                        </svg>
-                      )}
-                    </div>
+                    <div key={idx} className="flex items-start gap-5">
+                      <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg">
+                        {/* Icon logic - bold, white Lucide icons */}
+                        {section.icon === "sebi" && <ShieldCheck size={32} className="text-white" strokeWidth={2.5} />}
+                        {section.icon === "trust" && <Award size={32} className="text-white" strokeWidth={2.5} />}
+                        {section.icon === "mentorship" && <Users size={32} className="text-white" strokeWidth={2.5} />}
+                        {/* Fallback icon */}
+                        {!["sebi", "trust", "mentorship"].includes(section.icon) && (
+                          <ShieldCheck size={32} className="text-white opacity-60" strokeWidth={2.5} />
+                        )}
+                      </div>
                     <div>
                       <h4 className="text-lg font-bold text-white mb-1">{section.title}</h4>
                       <p className="text-slate-300 text-base">{section.description}</p>
