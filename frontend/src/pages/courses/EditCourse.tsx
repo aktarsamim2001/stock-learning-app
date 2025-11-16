@@ -181,10 +181,18 @@ const EditCourse = () => {
                   <label htmlFor="category" className="block text-sm font-medium text-white">Category</label>
                   <select name="category" id="category" required value={formData.category} onChange={handleChange} className="mt-1 block w-full bg-white/10 border border-white/20 rounded-md py-2 px-3 text-white placeholder-white/60 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
                     <option value="" className="bg-gray-800">Select a category</option>
-                    <option value="programming" className="bg-gray-800">Programming</option>
-                    <option value="design" className="bg-gray-800">Design</option>
-                    <option value="business" className="bg-gray-800">Business</option>
-                    <option value="marketing" className="bg-gray-800">Marketing</option>
+                    <option value="programming" className="bg-gray-800">
+                      Crypto Trading
+                    </option>
+                    <option value="design" className="bg-gray-800">
+                      Intraday Trading
+                    </option>
+                    <option value="business" className="bg-gray-800">
+                       Long-Term Investing
+                    </option>
+                    <option value="marketing" className="bg-gray-800">
+                      Options Trading
+                    </option>
                   </select>
                   {errors.category && <p className="text-red-400 text-xs mt-1">{errors.category}</p>}
                 </div>

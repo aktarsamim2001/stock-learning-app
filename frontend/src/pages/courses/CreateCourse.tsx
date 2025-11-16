@@ -206,16 +206,16 @@ const CreateCourse = () => {
                       Select a category
                     </option>
                     <option value="programming" className="bg-gray-800">
-                      Programming
+                      Crypto Trading
                     </option>
                     <option value="design" className="bg-gray-800">
-                      Design
+                      Intraday Trading
                     </option>
                     <option value="business" className="bg-gray-800">
-                      Business
+                       Long-Term Investing
                     </option>
                     <option value="marketing" className="bg-gray-800">
-                      Marketing
+                      Options Trading
                     </option>
                   </select>
                   {errors.category && (
